@@ -35,7 +35,6 @@ class RegistrationViewModel : ViewModel() {
     }
 
     fun onSubmitBtnClicked() {
-
     }
 }
 

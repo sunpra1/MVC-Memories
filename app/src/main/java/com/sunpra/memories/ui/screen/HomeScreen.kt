@@ -43,7 +43,7 @@ fun HomeScreen(
                 title = {
                     Text(
                         text = "My Memories",
-                        style = MaterialTheme.typography.titleMedium
+                        style = MaterialTheme.typography.headlineMedium
                     )
                 }
             )
@@ -82,7 +82,7 @@ fun MyMemory(memory: Memory) {
             )
     ) {
         Image(
-            modifier = Modifier.size(150.dp),
+            modifier = Modifier.size(90.dp),
             painter = painterResource(R.drawable.ic_launcher_background),
             contentDescription = "My memory image"
         )
