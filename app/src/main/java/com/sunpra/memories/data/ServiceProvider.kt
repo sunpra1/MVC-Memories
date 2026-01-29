@@ -13,7 +13,11 @@ object ServiceProvider {
 
 
     val client = OkHttpClient.Builder()
-        .addInterceptor(HttpLoggingInterceptor())
+        .addInterceptor(
+            HttpLoggingInterceptor().apply {
+                level = HttpLoggingInterceptor.Level.BODY
+            }
+        )
         .readTimeout(20.seconds)
         .writeTimeout(20.seconds)
         .build()

@@ -8,6 +8,6 @@ import retrofit2.http.POST
 interface MemoriesService {
 
     @POST("user/register")
-    suspend fun registerUser(@Body registrationBody: RegistrationBody): Response<Any>
+    suspend fun registerUser(@Body registrationBody: RegistrationBody): Response<String>
 
 }
