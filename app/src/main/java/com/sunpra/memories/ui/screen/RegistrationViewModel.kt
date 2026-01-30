@@ -22,6 +22,9 @@ class RegistrationViewModel : ViewModel() {
     private val _message = MutableStateFlow<String?>(null)
     val message = _message.asStateFlow()
 
+    private val _navigateHome = MutableSharedFlow<Unit>()
+    val navigateHome = _navigateHome.asSharedFlow()
+
     fun clearMessage() {
         _message.update { null }
     }
@@ -61,7 +64,7 @@ class RegistrationViewModel : ViewModel() {
         viewModelScope.launch {
             val result: Result<String> = repository.registerUser(registrationBody)
             if (result.isSuccess) {
-                // Navigate to home screen
+                _navigateHome.emit(Unit)
             }else{
                 _message.update {
                     result.exceptionOrNull()?.message ?: "Registration failed"

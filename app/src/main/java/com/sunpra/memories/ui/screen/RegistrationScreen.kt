@@ -21,6 +21,7 @@ import androidx.compose.material3.TextField
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -31,15 +32,27 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.sunpra.memories.ui.theme.MemoriesTheme
 import com.sunpra.memories.ui.widget.MessageDialog
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RegistrationScreen(
+    navigateToHomeScreen: () -> Unit,
     viewModel: RegistrationViewModel = viewModel()
 ) {
 
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val message by viewModel.message.collectAsStateWithLifecycle()
+
+    LaunchedEffect(Unit) {
+        launch {
+            viewModel.navigateHome.collectLatest {
+                navigateToHomeScreen()
+            }
+        }
+    }
+
 
     Scaffold(
         topBar = {
@@ -128,6 +141,8 @@ fun RegistrationScreen(
 @Composable
 fun PreviewRegistrationScreen() {
     MemoriesTheme {
-        RegistrationScreen()
+        RegistrationScreen(
+            navigateToHomeScreen = {}
+        )
     }
 }

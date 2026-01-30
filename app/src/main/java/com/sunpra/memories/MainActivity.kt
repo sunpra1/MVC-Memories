@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.lifecycle.lifecycleScope
 import com.sunpra.memories.data.ServiceProvider
 import com.sunpra.memories.model.RegistrationBody
+import com.sunpra.memories.ui.navigation.AppNavigation
 import com.sunpra.memories.ui.screen.HomeScreen
 import com.sunpra.memories.ui.screen.RegistrationScreen
 import com.sunpra.memories.ui.theme.MemoriesTheme
@@ -21,7 +22,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MemoriesTheme {
-                RegistrationScreen()
+                AppNavigation()
             }
         }
     }
