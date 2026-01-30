@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.sunpra.memories.data.Repository
 import com.sunpra.memories.data.ServiceProvider
 import com.sunpra.memories.model.RegistrationBody
+import com.sunpra.memories.model.RegistrationResponse
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
@@ -62,7 +63,7 @@ class RegistrationViewModel : ViewModel() {
             confirmPassword = uiState.confirmPassword
         )
         viewModelScope.launch {
-            val result: Result<String> = repository.registerUser(registrationBody)
+            val result: Result<RegistrationResponse> = repository.registerUser(registrationBody)
             if (result.isSuccess) {
                 _navigateHome.emit(Unit)
             }else{

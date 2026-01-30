@@ -1,6 +1,7 @@
 package com.sunpra.memories.data
 
 import com.sunpra.memories.model.RegistrationBody
+import com.sunpra.memories.model.RegistrationResponse
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.POST
@@ -8,6 +9,6 @@ import retrofit2.http.POST
 interface MemoriesService {
 
     @POST("user/register")
-    suspend fun registerUser(@Body registrationBody: RegistrationBody): Response<String>
+    suspend fun registerUser(@Body registrationBody: RegistrationBody): Response<RegistrationResponse>
 
 }
