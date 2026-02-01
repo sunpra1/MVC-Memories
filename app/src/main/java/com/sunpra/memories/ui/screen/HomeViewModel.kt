@@ -12,19 +12,12 @@ class HomeViewModel : ViewModel() {
     private val _uiState = MutableStateFlow(HomeUIState())
     val uiState = _uiState.asStateFlow()
 
+    private fun getMyMemories() {
+        // TODO use repository to display list of memories
+    }
+
 }
 
 data class HomeUIState(
-    val memories: SnapshotStateList<Memory> = mutableStateListOf(
-        Memory(
-            image = "",
-            title = "Bali Trip",
-            description = "Had a great time in Bali."
-        ),
-        Memory(
-            image = "",
-            title = "London Trip",
-            description = "Had a great time in London."
-        )
-    )
+    val memories: SnapshotStateList<Memory> = mutableStateListOf()
 )

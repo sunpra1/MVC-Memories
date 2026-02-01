@@ -24,7 +24,10 @@ object ServiceProvider {
 
     val retrofit: Retrofit = Retrofit.Builder()
         .client(client)
-        .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
+        .addConverterFactory(
+            Json{ ignoreUnknownKeys = true }
+                .asConverterFactory("application/json".toMediaType())
+        )
         .baseUrl("https://sunilprasai.com.np/api/")
         .build()
 

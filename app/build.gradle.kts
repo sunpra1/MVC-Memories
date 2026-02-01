@@ -81,4 +81,10 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.navigation3)
     implementation(libs.androidx.material3.adaptive.navigation3)
     implementation(libs.kotlinx.serialization.core)
+
+    // Preferences DataStore (SharedPreferences like APIs)
+    implementation("androidx.datastore:datastore-preferences:1.2.0")
+
+    // Alternatively - without an Android dependency.
+    implementation("androidx.datastore:datastore-preferences-core:1.2.0")
 }

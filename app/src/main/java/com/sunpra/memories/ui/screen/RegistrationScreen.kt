@@ -47,8 +47,8 @@ fun RegistrationScreen(
 
     LaunchedEffect(Unit) {
         launch {
-            viewModel.navigateHome.collectLatest {
-                navigateToHomeScreen()
+            viewModel.savedToken.collectLatest { token ->
+                if(token != null) navigateToHomeScreen()
             }
         }
     }
